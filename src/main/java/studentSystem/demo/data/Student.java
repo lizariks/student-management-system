@@ -26,12 +26,10 @@ public class Student {
 
     private String email;
 
-    // Relationship with Group (Many to One)
     @ManyToOne
     @JoinColumn(name = "group_id", referencedColumnName = "id")
     private Group group;
 
-    // Relationship with Course (Many to Many)
     @ManyToMany
     @JoinTable(
             name = "student_courses",

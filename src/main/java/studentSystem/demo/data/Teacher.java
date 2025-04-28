@@ -1,28 +1,26 @@
 package studentSystem.demo.data;
+
+
 import jakarta.persistence.*;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
-import java.util.*;
+
+import java.util.List;
 
 @Entity
-@Table(name = "teachers")
 @Getter
 @Setter
-@EqualsAndHashCode
-@ToString
+@NoArgsConstructor
 public class Teacher {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String firstName;
+    private String name;
 
-    private String lastName;
-
-    private String email;
-    @OneToMany(mappedBy = "teacher")
+    @OneToMany(mappedBy = "teacher", cascade = CascadeType.ALL)
     private List<Course> courses;
 }
+
