@@ -88,6 +88,17 @@
 				</configuration>
 			</plugin>
 			<plugin>
+				<groupId>org.flywaydb</groupId>
+				<artifactId>flyway-maven-plugin</artifactId>
+				<version>10.20.1</version>
+				<configuration>
+					<url>jdbc:postgresql://localhost:5432/student_system</url>
+					<user>postgres</user>
+					<password>8289</password>
+				</configuration>
+			</plugin>
+
+			<plugin>
 				<groupId>gg.jte</groupId>
 				<artifactId>jte-maven-plugin</artifactId>
 				<version>3.1.16</version>

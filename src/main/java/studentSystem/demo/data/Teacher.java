@@ -21,6 +21,9 @@ public class Teacher {
 
     private String firstName;
     private String lastName;
+    private String email;
+    private String password;
+    private String username;
 
     @OneToOne
     @JoinColumn(name = "course_id", referencedColumnName = "id")

@@ -19,12 +19,12 @@ public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String firstName;
-
     private String lastName;
-
     private String email;
+    private String password;
+    private String username;
+
 
     @ManyToOne
     @JoinColumn(name = "group_id", referencedColumnName = "id")

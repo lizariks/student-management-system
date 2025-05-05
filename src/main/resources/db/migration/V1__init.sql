@@ -11,6 +11,8 @@ CREATE TABLE students
     first_name VARCHAR(50)         NOT NULL,
     last_name  VARCHAR(50)         NOT NULL,
     email      VARCHAR(100) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    username VARCHAR(255) NOT NULL UNIQUE,
     group_id   INT,
     CONSTRAINT fk_student_group FOREIGN KEY (group_id) REFERENCES groups (id)
 );
@@ -27,6 +29,9 @@ CREATE TABLE teachers
     id         SERIAL PRIMARY KEY,
     first_name VARCHAR(50) NOT NULL,
     last_name  VARCHAR(50) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    username VARCHAR(255) NOT NULL UNIQUE,
     course_id  INT UNIQUE,
     CONSTRAINT fk_teacher_course FOREIGN KEY (course_id) REFERENCES courses (id)
 );
@@ -40,3 +45,4 @@ CREATE TABLE student_courses
     CONSTRAINT fk_student FOREIGN KEY (student_id) REFERENCES students (id),
     CONSTRAINT fk_course FOREIGN KEY (course_id) REFERENCES courses (id)
 );
+

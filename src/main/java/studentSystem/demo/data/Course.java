@@ -26,6 +26,8 @@ public class Course {
 
     @ManyToMany(mappedBy = "courses")
     private List<Student> students = new ArrayList<>();
+    @OneToOne(mappedBy = "course")
+    private Teacher teacher;
 }
 
 
