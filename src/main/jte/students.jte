@@ -1,32 +1,46 @@
-@import java.util.*
-
-@import studentSystem.demo.presentation.StudentController
 @import studentSystem.demo.data.Student
+@import studentSystem.demo.data.Course
+@import java.util.List
 
-@param List<studentSystem.demo.data.Student> students
-
+@param List<Student> students
 
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Students List</title>
 </head>
 <body>
-<h1>List of Students</h1>
-<ul>
+<h1>Students</h1>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Group</th>
+        <th>Courses</th>
+    </tr>
     @for(Student student : students)
-    <li>
-        <div class="card">
-        <h4>${student.getId()}</h4>
-        <p>${student.getFirstName() + student.getLastName()}</p>
-        <h6>${student.getGroup().getGroupName()}</h6>
-    </div>
-    </li>
+        <tr>
+            <td>${student.getId()}</td>
+            <td>${student.getFirstName()}</td>
+            <td>${student.getLastName()}</td>
+            <td>${student.getEmail()}</td>
+            <td>${student.getGroup() != null ? student.getGroup().getGroupName() : "Not assigned"}</td>
+            <td>
+                @if(student.getCourses() != null)
+                    <ul>
+                        @for(Course course : student.getCourses())
+                            <li>${course != null ? course.getName() : "Unknown course"}</li>
+                        @endfor
+                    </ul>
+                @else
+                    No courses enrolled
+                @endif
+            </td>
+        </tr>
     @endfor
-    </ul>
+</table>
+<a href="/">Back to Home</a>
 </body>
 </html>

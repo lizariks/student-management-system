@@ -9,6 +9,7 @@ import lombok.Setter;
 import java.util.List;
 
 @Entity
+@Table(name = "teachers")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -18,9 +19,12 @@ public class Teacher {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
+    private String firstName;
+    private String lastName;
 
-    @OneToMany(mappedBy = "teacher", cascade = CascadeType.ALL)
-    private List<Course> courses;
+    @OneToOne
+    @JoinColumn(name = "course_id", referencedColumnName = "id")
+    private Course course;
 }
+
 

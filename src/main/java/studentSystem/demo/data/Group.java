@@ -22,5 +22,5 @@ public class Group {
     private String groupName;
 
     @OneToMany(mappedBy = "group")
-    private List<Student> students;
+    private List<Student> students = new ArrayList<>();
 }
